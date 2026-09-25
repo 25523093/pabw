@@ -1,0 +1,96 @@
+/* ==========================================================================
+   LAYOUT.CSS — navbar, susunan bagian halaman, footer (Lembar F)
+   Memakai selector kelas yang SUDAH ADA di kerangka (.kepala, .kaki)
+   dan selector elemen, tanpa mengubah struktur HTML.
+   ========================================================================== */
+
+/* --- Navbar dalam satu baris --- */
+.kepala {
+  display: flex;
+  align-items: center;      /* sumbu silang: rata tengah */
+  justify-content: space-between; /* judul di kiri, menu di kanan */
+  gap: var(--space-4);
+  flex-wrap: wrap;          /* turun baris di layar sempit, jangan meluber */
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.kepala h1 { font-size: var(--text-xl); }
+.kepala .tagline {
+  font-size: var(--text-sm);
+  flex-basis: 100%; /* tagline turun ke barisnya sendiri, tetap terlihat */
+  order: 3;
+}
+
+.kepala nav ul {
+  display: flex;
+  gap: var(--space-4);
+  list-style: none; /* daftar nav tanpa butir */
+  padding: 0;
+}
+
+.kepala nav a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.kepala nav a:hover { text-decoration: underline; }
+
+/* Tombol pengalih tema — lihat tema.css untuk perilakunya */
+.tombol-tema {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  background: var(--color-surface);
+  color: var(--color-fg);
+}
+
+/* --- Susunan bagian halaman --- */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap); /* jarak antar bagian, tanpa margin */
+  padding-block: var(--space-6);
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+main section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--card-pad);
+}
+
+main section > h2 {
+  margin-bottom: var(--space-3);
+}
+
+/* --- Katalog kartu (Lembar F.2) — dipakai untuk daftar Karya --- */
+.katalog {
+  display: flex;
+  flex-wrap: wrap; /* kunci responsif: kartu turun sendiri */
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+}
+
+.kartu {
+  flex: 1 1 16rem; /* tumbuh, menyusut, lebar dasar 16rem */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--card-pad);
+}
+
+/* --- Footer --- */
+.kaki {
+  margin-top: var(--space-6);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-fg); /* hindari abu pucat yang gagal kontras */
+  font-size: var(--text-sm);
+}

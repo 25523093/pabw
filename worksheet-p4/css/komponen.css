@@ -1,0 +1,150 @@
+/* ==========================================================================
+   KOMPONEN.CSS — form, keadaan fokus, isian tidak sah,
+   dan gaya tiga struktur tambahan (Lembar G + B.3)
+   ========================================================================== */
+
+/* --- Kolom form --- */
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+legend {
+  font-weight: 600;
+  padding-inline: var(--space-2);
+}
+
+form p { /* setiap <p> di dalam form membungkus satu label + kolom */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+input, textarea {
+  font: inherit; /* kolom isian ikut ukuran huruf halaman */
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-fg);
+}
+
+button {
+  font: inherit;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  cursor: pointer;
+}
+
+#nim-bantuan {
+  font-size: var(--text-sm);
+  color: var(--color-fg);
+}
+
+/* --- Keadaan fokus — wajib terlihat --- */
+/* :focus-visible hanya muncul saat pengguna memakai papan ketik */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+/* JANGAN: *:focus { outline: none; } — pengguna papan ketik kehilangan jejak */
+
+/* --- Isian tidak sah: hanya setelah disentuh pengguna --- */
+input:user-invalid, textarea:user-invalid {
+  border-color: var(--color-danger);
+  border-width: 2px;
+}
+
+/* Pesan galat: sembunyikan selama belum tidak-sah, tampilkan saat perlu.
+   Warna saja tidak cukup — makanya ada teksnya, bukan cuma garis merah. */
+.pesan-galat {
+  display: none;
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+}
+.form-kolom:has(input:user-invalid) .pesan-galat,
+.form-kolom:has(textarea:user-invalid) .pesan-galat {
+  display: block;
+}
+
+/* --- Tabel kegiatan (bagian Tentang) --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+th, td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --- Foto profil --- */
+.foto img {
+  border-radius: var(--radius-md);
+}
+.foto figcaption {
+  font-size: var(--text-sm);
+  margin-top: var(--space-2);
+}
+
+/* ==========================================================================
+   STRUKTUR TAMBAHAN (Lembar B.3) — gaya untuk tiga bagian baru
+   ========================================================================== */
+
+/* Pilihan 1: Tanya jawab — <details>/<summary> */
+details {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+details + details { margin-top: var(--space-2); }
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+details p { margin-top: var(--space-2); }
+
+/* Pilihan 3: Lini masa — <ol class="lini"> + <time> */
+ol.lini {
+  list-style: none;
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-border);
+}
+ol.lini li {
+  padding-bottom: var(--space-4);
+  position: relative;
+}
+ol.lini li:last-child { padding-bottom: 0; }
+ol.lini time {
+  display: block;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+}
+
+/* Pilihan 4: Keterampilan — <dl class="keterampilan"> */
+dl.keterampilan dt {
+  font-weight: 600;
+  margin-top: var(--space-3);
+}
+dl.keterampilan dt:first-child { margin-top: 0; }
+dl.keterampilan dd {
+  padding-left: var(--space-4); /* dari token, bukan margin manual */
+  color: var(--color-fg);
+}
