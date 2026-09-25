@@ -1,8 +1,43 @@
-# Praktikum P04 — Design Token untuk Halaman Profil Saya
+# PABW — Muhammad Raihan Afifuddin — 25523093
+
+Repo ini memuat pekerjaan mata kuliah Pengembangan Aplikasi Berbasis Web,
+satu folder untuk setiap pertemuan.
+
+## Pertemuan 4 — Halaman profil saya
 
 Halaman profil ini dibuat untuk memperkenalkan Muhammad Raihan Afifuddin,
 mahasiswa Program Studi Informatika Universitas Islam Indonesia. Halaman
 berisi informasi diri, kegiatan, karya, keterampilan, dan formulir kontak.
+
+### Arah visual
+
+- **Arah visual:** Tegas dan teknis
+- **Warna utama:** `#060F27` (navy nyaris hitam) — diambil dari warna langit
+  malam pada foto profil saya sendiri di bagian Tentang saya
+- **Warna netral:** `--gray-50 #F8FAFC` untuk latar, `--gray-900 #0F172A`
+  untuk teks; latar kartu putih `#FFFFFF`, garis tepi `#D1D5DB`
+- **Ukuran huruf:** teks isi 1rem, judul bagian 1.5rem, judul halaman 2.25rem
+- **Jarak dasar:** skala 4 langkah — 0.25rem / 0.5rem / 0.75rem / 1rem, dan
+  1.5rem untuk jarak antar bagian halaman
+- **Radius & bayangan:** radius 0.5rem untuk tombol dan kartu, radius penuh
+  999px untuk bentuk pil, bayangan halus `0 1px 3px rgba(0,0,0,.10)`
+
+### Design token yang saya tetapkan
+
+| Token | Nilai | Untuk apa |
+|---|---|---|
+| `--color-primary` | `#060F27` | tombol, tautan, penanda |
+| `--color-fg` | `#0F172A` | warna teks utama |
+| `--color-bg` | `#F8FAFC` | latar halaman |
+| `--color-surface` | `#FFFFFF` | latar kartu dan panel |
+| `--color-border` | `#D1D5DB` | garis pemisah dan tepi kotak |
+| `--color-focus` | `#3E4F74` | garis fokus papan ketik |
+| `--radius-md` | `0.5rem` | sudut tombol dan kartu |
+| `--space-4` | `1rem` | jarak standar antar elemen |
+
+Kriteria selesai saya: mengubah `--color-primary` cukup di satu baris (lapis
+primitif `--blue-700` di `tokens.css`), lalu tombol, tautan, judul, dan garis
+fokus ikut berubah sekaligus tanpa menyunting berkas lain.
 
 ## Isi paket
 
