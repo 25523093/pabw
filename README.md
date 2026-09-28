@@ -39,12 +39,57 @@ Kriteria selesai saya: mengubah `--color-primary` cukup di satu baris (lapis
 primitif `--blue-700` di `tokens.css`), lalu tombol, tautan, judul, dan garis
 fokus ikut berubah sekaligus tanpa menyunting berkas lain.
 
+## Pertemuan 5 — Layout modern: flexbox dan grid
+
+Halaman yang sama dengan Pertemuan 4, disalin ke `worksheet-p5/`. Isi HTML,
+warna, dan token tidak berubah; yang berubah hanya CSS yang mengatur posisi.
+
+### Sketsa kerangka
+
+```
++----------------------------------------------------+
+| KEPALA (flex)    judul ............ menu   [tema]   |  baris 1: auto
++----------------------------------------------------+
+| TENTANG SAYA  (area "tentang", dua kolom)          |
++--------------+-------------------------------------+
+| KETERAMPILAN | KARYA  (galeri auto-fit)            |  baris 2: 1fr
+| (sidebar,    | HUBUNGI SAYA                        |  kolom: 16rem 1fr
+|  span 4 baris)| TANYA JAWAB                        |
+|              | PERJALANAN SAYA                     |
++--------------+-------------------------------------+
+| KAKI HALAMAN                                       |  baris 3: auto
++----------------------------------------------------+
+```
+
+### Keputusan tata letak
+
+| Bagian | Pola | Alasan |
+|---|---|---|
+| Kerangka `body` | grid `auto 1fr auto`, `min-height: 100dvh` | kepala dan kaki menempel, isi mengisi sisa tinggi |
+| Kepala dan menu | flex + `gap` + `flex-wrap` | item berderet satu arah, turun baris sendiri |
+| Area isi `main` | grid `16rem 1fr` (layar ≥ 48rem), satu kolom di bawahnya | sidebar tetap, konten lentur |
+| Blok Tentang | area bernama `tentang` | menempati dua kolom |
+| Blok Keterampilan | `grid-row: 2 / span 4` | sidebar setinggi empat baris |
+| Galeri Karya | grid `repeat(auto-fit, minmax(min(16rem, 100%), 1fr))` | kolom berubah tanpa media query |
+| Isi kartu dan bagian | flex kolom + `gap` | tersusun berderet, tanpa margin tempelan |
+
+### Tiga kasus sulit yang diperbaiki
+
+- **Tinggi tidak seragam:** kartu memakai `min-height: 8rem` dan `justify-content: flex-start`.
+- **Isi panjang:** `min-width: 0` pada bagian dan kartu, `overflow-wrap: anywhere`.
+- **Meluber:** tabel kegiatan melewati kotaknya di 360 px, diperbaiki dengan
+  `overflow-wrap: anywhere` pada `th` dan `td`.
+
+Diuji pada lebar 320, 360, 768, dan 1 280 px: tidak ada gulir mendatar dan
+tidak ada elemen keluar dari kotaknya. Pengalih tema gelap tetap berfungsi.
+
 ## Isi paket
 
 - `worksheet-p4/profil.html` — halaman profil pribadi.
 - `worksheet-p4/media/foto-profil.jpg` — foto profil yang digunakan pada halaman.
 - `worksheet-p4/css/` — lima berkas gaya berbasis design token.
 - `worksheet-p4/bukti/` — tempat tangkapan layar hasil evaluasi.
+- `worksheet-p5/` — `profil.html` dan lima berkas CSS dengan tata letak flexbox dan grid.
 
 ## Tiga pekerjaan utama
 
