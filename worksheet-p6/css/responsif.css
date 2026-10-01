@@ -1,0 +1,72 @@
+/* ==========================================================================
+   RESPONSIF.CSS — Pertemuan 6: Responsif Mobile-First
+   Ditulis dari layar sempit dahulu. Bagian atas (tanpa media query) berlaku
+   di SEMUA lebar. Bagian bawah (dengan min-width) HANYA menambah, tidak
+   pernah menimpa nilai dasar dengan max-width.
+   ========================================================================== */
+
+/* --- LEMBAR B.1 — Gaya dasar, berlaku di semua lebar, tanpa media query ---
+   main dan .katalog sudah satu kolom sejak Pertemuan 5 (lihat layout.css),
+   baris ini menegaskannya secara eksplisit sebagai dasar mobile-first. */
+main {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.katalog {
+  grid-template-columns: 1fr;
+}
+
+/* --- LEMBAR D.1 — Tabel lebar: wadah bergulir sendiri, bukan menggeser halaman.
+   Catatan: tabel Kegiatan di halaman ini masih muat pada 360px, jadi baris
+   ini tidak pernah benar-benar dipakai menggulir — dipasang sebagai jaring
+   pengaman kalau suatu saat kolomnya bertambah. */
+.table-wrap {
+  overflow-x: auto;
+}
+
+/* Tanpa min-width, tabel malah menyusut dan huruf terpotong per suku kata
+   (dicoba dulu tanpa baris ini — lihat E.4 nomor 3). Dengan min-width,
+   tabel yang tidak muat akan digulir oleh .table-wrap, bukan dipaksa menyusut. */
+.table-wrap table {
+  min-width: 28rem;
+}
+
+/* Gambar dan teks dasar (max-width:100% dan satuan rem) sudah ditulis sejak
+   Pertemuan 4 di base.css, tidak diulang di sini supaya tidak ada dua sumber
+   untuk aturan yang sama (lihat Lembar C.3). */
+
+/* --- LEMBAR C.1 — Titik henti pertama: galeri dua kolom --- */
+@media (min-width: 48rem) {
+  .katalog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- LEMBAR C.1 — Titik henti kedua: sidebar bersanding, galeri tiga kolom --- */
+@media (min-width: 60rem) {
+  main {
+    grid-template-columns: 16rem 1fr;
+    grid-template-areas:
+      "tentang tentang"
+      ".       karya"
+      ".       kontak"
+      ".       tanya"
+      ".       lini";
+  }
+
+  #tentang     { grid-area: tentang; }
+  #karya       { grid-area: karya; }
+  #kontak      { grid-area: kontak; }
+  #tanya-jawab { grid-area: tanya; }
+  #lini-masa   { grid-area: lini; }
+
+  #keterampilan {
+    grid-column: 1;
+    grid-row: 2 / span 4;
+    align-self: start;
+  }
+
+  .katalog {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
