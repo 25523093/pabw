@@ -83,6 +83,39 @@ warna, dan token tidak berubah; yang berubah hanya CSS yang mengatur posisi.
 Diuji pada lebar 320, 360, 768, dan 1 280 px: tidak ada gulir mendatar dan
 tidak ada elemen keluar dari kotaknya. Pengalih tema gelap tetap berfungsi.
 
+## Pertemuan 6 — Responsif mobile-first
+
+Halaman yang sama dengan Pertemuan 5, disalin ke `worksheet-p6/`. Ditambah
+satu berkas baru, `css/responsif.css`, dimuat paling akhir. Baris meta
+viewport dan `img { max-width: 100% }` sudah ada sejak Pertemuan 4, jadi
+tidak ditulis ulang.
+
+### Cara kerja `responsif.css`
+
+- **Gaya dasar (tanpa media query):** `main` dan `.katalog` satu kolom,
+  berlaku di semua lebar. Ini yang pertama dibaca peramban di ponsel.
+- **Titik henti 48rem:** galeri Karya berubah dua kolom.
+- **Titik henti 60rem:** sidebar Keterampilan bersanding dengan konten
+  (area bernama + `span` empat baris), galeri jadi tiga kolom.
+
+Kedua titik henti memakai `min-width`, jadi sifatnya menambah, bukan
+menimpa — gaya dasar tetap berlaku sebagai jaminan minimum di layar sempit.
+Titik henti kerangka dua kolom yang tadinya di `layout.css` (48rem, sejak
+Pertemuan 5) dipindah ke sini dan angkanya diubah ke 60rem, supaya hanya
+satu berkas yang mengatur seluruh titik henti.
+
+### Satu kasus luberan yang ditemukan
+
+Tabel Kegiatan dibungkus `<div class="table-wrap">` dengan
+`overflow-x: auto`, tetapi ternyata itu saja belum cukup: karena tabelnya
+diizinkan menyusut, isinya malah terpotong per suku kata di layar sempit.
+Wadah bergulir baru bekerja setelah tabelnya diberi `min-width: 28rem` —
+tabel yang tidak muat jadi digulir oleh wadahnya, bukan dipaksa menyusut.
+
+Diuji pada 360 px, 768 px, dan 1 280 px (tangkapan layar di
+`worksheet-p6/bukti/`): tidak ada gulir mendatar pada halaman, jumlah
+kolom galeri berubah 1 → 2 → 3, dan tema gelap tetap berfungsi.
+
 ## Isi paket
 
 - `worksheet-p4/profil.html` — halaman profil pribadi.
@@ -90,6 +123,7 @@ tidak ada elemen keluar dari kotaknya. Pengalih tema gelap tetap berfungsi.
 - `worksheet-p4/css/` — lima berkas gaya berbasis design token.
 - `worksheet-p4/bukti/` — tempat tangkapan layar hasil evaluasi.
 - `worksheet-p5/` — `profil.html` dan lima berkas CSS dengan tata letak flexbox dan grid.
+- `worksheet-p6/` — `profil.html`, keenam berkas CSS (lima dari P4/P5 + responsif.css), dan `bukti/` (tiga tangkapan layar 360/768/1280 px).
 
 ## Tiga pekerjaan utama
 
