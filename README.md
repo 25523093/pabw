@@ -116,6 +116,46 @@ Diuji pada 360 px, 768 px, dan 1 280 px (tangkapan layar di
 `worksheet-p6/bukti/`): tidak ada gulir mendatar pada halaman, jumlah
 kolom galeri berubah 1 → 2 → 3, dan tema gelap tetap berfungsi.
 
+## Pertemuan 8 — Data halaman sebagai JavaScript
+
+Halaman yang sama dengan Pertemuan 6, disalin ke `worksheet-p8/`, ditambah
+folder `js/` berisi `app.js`. Tampilan halaman tidak berubah di pertemuan
+ini — data membaca/menulis ke HTML baru dimulai Pertemuan 9. Semua hasil
+di pertemuan ini diperiksa lewat Console.
+
+### Isi `app.js`
+
+- **Data sebagai nilai:** identitas (`nama`, `peran`, `keahlian`) dan daftar
+  proyek (`daftarProyek`, array berisi 4 object) disimpan sebagai `const`,
+  bukan ditulis di HTML.
+- **Dua fungsi murni:** `buatPerkenalan({ nama, peran })` (deklarasi fungsi)
+  dan `formatKeahlian(daftar)` (arrow function). Keduanya hanya bergantung
+  pada argumennya dan selalu memberi hasil yang sama.
+- **Array methods:** `map` (ambil judul saja), `filter` (hanya yang
+  `selesai: true`), `find` (cari proyek yang memuat "P04"). Data asli
+  tidak diubah — penyalinan memakai `{ ...profil }` dan `[...daftarProyek]`.
+
+### Tiga kasus galat yang saya coba dan perbaiki
+
+| Galat (teks asli dari Console) | Sebabnya | Perbaikan |
+|---|---|---|
+| `Cannot read properties of null (reading 'textContent')` | `querySelector("#keahlian")` — id itu tidak ada di HTML, yang benar `#keterampilan` | Ganti ke selektor yang benar |
+| `"21"` padahal maunya `3` | `"2" + 1` menyambung teks, bukan menjumlahkan | Bungkus dengan `Number("2")` dulu |
+| `undefined` pada `profilContoh.namaLengkap` | Label salah ketik, yang benar `nama` | Samakan nama label dengan yang dideklarasikan |
+
+Diuji lewat server lokal (`python3 -m http.server`) — membuka lewat
+`file://` langsung menyebabkan galat CORS, persis seperti yang dijelaskan
+di Lembar A/E worksheet. Console bersih tanpa pesan merah setelah semua
+baris percobaan di atas dikembalikan ke versi yang benar.
+
+### Pengungkapan AI — Pertemuan 8
+
+Struktur `app.js` (urutan lembar B–E, komentar penjelas, dan tiga contoh
+kasus galat) disusun dengan bantuan AI berdasarkan worksheet. Data profil
+(nama, keahlian, daftar proyek) memakai isi nyata dari halaman saya
+sendiri sejak Pertemuan 4. Pengujian Console (memastikan tidak ada galat,
+dan mengambil teks galat asli untuk ketiga kasus) dijalankan sendiri.
+
 ## Isi paket
 
 - `worksheet-p4/profil.html` — halaman profil pribadi.
@@ -124,6 +164,7 @@ kolom galeri berubah 1 → 2 → 3, dan tema gelap tetap berfungsi.
 - `worksheet-p4/bukti/` — tempat tangkapan layar hasil evaluasi.
 - `worksheet-p5/` — `profil.html` dan lima berkas CSS dengan tata letak flexbox dan grid.
 - `worksheet-p6/` — `profil.html`, keenam berkas CSS (lima dari P4/P5 + responsif.css), dan `bukti/` (tiga tangkapan layar 360/768/1280 px).
+- `worksheet-p8/` — `profil.html`, seluruh CSS dari P6, dan `js/app.js` (data, fungsi murni, array methods).
 
 ## Tiga pekerjaan utama
 
