@@ -156,6 +156,44 @@ kasus galat) disusun dengan bantuan AI berdasarkan worksheet. Data profil
 sendiri sejak Pertemuan 4. Pengujian Console (memastikan tidak ada galat,
 dan mengambil teks galat asli untuk ketiga kasus) dijalankan sendiri.
 
+## Pertemuan 9 — DOM, Event, dan Interaktivitas
+
+Lanjutan dari P8: data di `app.js` sekarang dipasang ke halaman oleh `dom.js`.
+
+| Lembar | Yang dikerjakan | Letak |
+|---|---|---|
+| A | Wadah `#daftar`, `#filter`, `#pesan-kosong` di HTML; semua pemilih dicek tidak null | `profil.html`, awal `dom.js` |
+| B | Kartu proyek dibuat dari array dengan `createElement`, `textContent`, `append` (tanpa `innerHTML`) | `buatKartu()` di `dom.js` |
+| C | Satu pendengar `click` di `#filter` (event delegation) memakai `event.target.closest("button")` dan `dataset.kategori`; tombol aktif ditandai kelas `.aktif` | `dom.js`, `komponen.css` |
+| D | `render(daftar)`: kosongkan wadah → cek kosong → isi ulang. Form: `preventDefault`, validasi per kolom dengan `trim()`, `aria-invalid`, tombol kirim `disabled` sampai layak | `render()` dan bagian form di `dom.js` |
+| E | Tiga kasus sulit: pemilih `null`, pendengar ganda, daftar kosong (lihat `bukti/`) | worksheet E.4 |
+
+Perubahan pada berkas P8:
+- `app.js`: setiap proyek diberi `kategori` (`"web"` / `"data"`), dan `daftarProyek` serta `profil` diekspor.
+- `profil.html`: daftar tulisan tangan diganti `#filter` + `#daftar` + `#pesan-kosong`; form diberi `id="form-kontak"` dan `novalidate`; ditambah `<script type="module" src="js/dom.js">`.
+- `komponen.css`: gaya `.aktif`, `.tidak-sah`, `[aria-invalid="true"]`, dan `button:disabled`; penanda galat form berpindah dari `:user-invalid` ke kelas buatan JavaScript supaya isian spasi saja ikut ditolak.
+- Contoh NIM pada bantuan form diperbaiki menjadi 8 digit agar sesuai `pattern`.
+
+### Menjalankan
+
+Modul ES butuh server lokal (bukan klik dua kali pada `profil.html`):
+
+```
+cd worksheet-p9
+python -m http.server 8000
+# buka http://localhost:8000/profil.html
+```
+
+### Deklarasi penggunaan AI
+
+- **Dibantu AI :** penulisan `js/dom.js`, penambahan `kategori` + `export` di `app.js`, perubahan `profil.html` dan `komponen.css`.
+- **Saya kerjakan sendiri:** halaman profil, isi, dan data proyek dari P3–P8 (`profil.html`, CSS, `app.js`), pemilihan topik, serta menjalankan, membaca, dan memeriksa hasil P9 sebelum diserahkan.
+
+
+### Satu baris untuk diingat
+
+Id harus persis sama dengan di HTML, dan `addEventListener` dipasang sekali di induk, di luar `render()`.
+
 ## Isi paket
 
 - `worksheet-p4/profil.html` — halaman profil pribadi.
@@ -165,6 +203,7 @@ dan mengambil teks galat asli untuk ketiga kasus) dijalankan sendiri.
 - `worksheet-p5/` — `profil.html` dan lima berkas CSS dengan tata letak flexbox dan grid.
 - `worksheet-p6/` — `profil.html`, keenam berkas CSS (lima dari P4/P5 + responsif.css), dan `bukti/` (tiga tangkapan layar 360/768/1280 px).
 - `worksheet-p8/` — `profil.html`, seluruh CSS dari P6, dan `js/app.js` (data, fungsi murni, array methods).
+- `worksheet-p9/` — `profil.html`, seluruh CSS, `js/app.js` (data + kategori), `js/dom.js` (render, filter, validasi form), dan `bukti/` (tangkapan layar P9).
 
 ## Tiga pekerjaan utama
 
