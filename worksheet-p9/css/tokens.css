@@ -1,0 +1,44 @@
+/* ==========================================================================
+   TOKENS.CSS — GANTI NILAI DI LAPIS 1 DENGAN PILIHAN ANDA SENDIRI (Lembar C)
+   Contoh di bawah memakai arah visual "Tenang dan akademik" (biru).
+   Ganti --blue-700 dan --blue-500 dengan warna yang Anda ambil dari
+   foto/karya Anda sendiri, lalu jelaskan asalnya di README.
+   ========================================================================== */
+
+/* LAPIS 1 — primitif: nilai mentah, tidak menyebut peran apa pun */
+:root {
+  --blue-700: #060f27;   /* GANTI: warna utama pilihan Anda */
+  --blue-500: #3e4f74;   /* GANTI: varian lebih terang untuk garis fokus */
+  --gray-50:  #F8FAFC;
+  --gray-900: #0F172A;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+
+  --radius-md: 0.5rem;
+  --radius-full: 999px;
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, .10);
+
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-xl: 1.5rem;
+  --text-3xl: 2.25rem;
+}
+
+/* LAPIS 2 — semantik: peran. Isinya mengacu ke lapis 1.
+   Komponen HANYA boleh memakai nama-nama di lapis ini. */
+:root {
+  --color-bg: var(--gray-50);
+  --color-fg: var(--gray-900);
+  --color-surface: #FFFFFF;
+  --color-border: #D1D5DB;
+  --color-primary: var(--blue-700);
+  --color-danger: #B00020;
+  --color-focus: var(--blue-500);
+
+  --card-pad: var(--space-4);
+  --section-gap: var(--space-6);
+}
