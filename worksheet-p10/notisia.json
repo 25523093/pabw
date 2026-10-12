@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "titulu": "Mengenal HTML semantik",
+    "kategori": "web",
+    "ringkasan": "HTML semantik membantu struktur halaman lebih jelas bagi pengguna, browser, dan teknologi bantu.",
+    "tanggal": "2026-10-01",
+    "sumber": "Catatan belajar PABW",
+    "aktif": true
+  },
+  {
+    "id": 2,
+    "titulu": "Mengatur tampilan dengan design token",
+    "kategori": "web",
+    "ringkasan": "Design token menyimpan nilai warna, jarak, dan ukuran agar tampilan lebih konsisten.",
+    "tanggal": "2026-10-03",
+    "sumber": "Catatan belajar PABW",
+    "aktif": true
+  },
+  {
+    "id": 3,
+    "titulu": "Belajar JavaScript melalui data",
+    "kategori": "informatika",
+    "ringkasan": "Objek dan array dapat dipakai untuk menyimpan data, kemudian diolah dengan map, filter, dan find.",
+    "tanggal": "2026-10-06",
+    "sumber": "Catatan belajar PABW",
+    "aktif": true
+  },
+  {
+    "id": 4,
+    "titulu": "Menyusun tugas praktikum secara bertahap",
+    "kategori": "kuliah",
+    "ringkasan": "Memecah tugas menjadi langkah kecil memudahkan pengecekan dan mengurangi kesalahan.",
+    "tanggal": "2026-10-08",
+    "sumber": "Catatan belajar mahasiswa",
+    "aktif": true
+  },
+  {
+    "id": 5,
+    "titulu": "Memahami fetch dan JSON",
+    "kategori": "informatika",
+    "ringkasan": "fetch mengambil balasan HTTP, sedangkan JSON membantu mengubah data teks menjadi nilai JavaScript.",
+    "tanggal": "2026-10-10",
+    "sumber": "Catatan belajar PABW",
+    "aktif": true
+  }
+]

@@ -1,0 +1,43 @@
+/* ==========================================================================
+   TEMA.CSS — tema gelap dan tombol pengalihnya (Lembar H)
+   Hanya lapis semantik yang ditukar; komponen tidak disentuh.
+   ========================================================================== */
+
+/* --- Ikut pengaturan sistem --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0F172A;
+    --color-fg: #E2E8F0;
+    --color-surface: #1E293B;
+    --color-border: #334155;
+    --color-primary: #7DA9F7; /* versi lebih terang agar kontras tetap lolos */
+    --color-danger: #FF8A8A;
+    --color-focus: #FFC000;
+    --shadow-1: 0 1px 3px rgba(0, 0, 0, .45);
+  }
+}
+
+/* --- Kotak centang pengalih: disembunyikan secara visual, tetap dapat
+       dijangkau papan ketik lewat <label for="tema"> --- */
+.pengalih-tema {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Pilihan manual HARUS berada SETELAH blok media query,
+   supaya menang saat keduanya menyala bersamaan. */
+:root:has(#tema:checked) {
+  --color-bg: #0F172A;
+  --color-fg: #E2E8F0;
+  --color-surface: #1E293B;
+  --color-border: #334155;
+  --color-primary: #7DA9F7;
+  --color-danger: #FF8A8A;
+  --color-focus: #FFC000;
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, .45);
+}
