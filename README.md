@@ -275,3 +275,50 @@ kegiatan serta proyek yang saya kerjakan sendiri.
 Folder `worksheet-p4/` berisi `profil.html`, `css/`, `media/`, dan `bukti/`.
 Berkas dikumpulkan ke repositori GitHub pribadi setelah seluruh evaluasi dan
 bukti tangkapan layar selesai diperiksa.
+
+
+## Pertemuan 10 — JavaScript asinkron, fetch, Promise, dan JSON
+
+Bagian P10 melanjutkan halaman profil P9. Berkas baru `js/api.js` memuat alamat API publik `https://jsonplaceholder.typicode.com/posts`, memanggil `fetch`, memeriksa `respons.ok`, membaca JSON, serta mengekspor fungsi `ambilNotisia()`. Data API dipetakan menjadi bentuk yang dapat ditampilkan pada halaman. Berkas `js/dom.js` menangani keadaan memuat, berhasil, gagal, dan kosong; tombol filter dan validasi form P9 tetap dipertahankan.
+
+### Menjalankan
+1. Buka folder `worksheet-p10` di VS Code.
+2. Jalankan server lokal dari folder ini, misalnya `profil.html dijalankan melalui Live Server di VS Code.`.
+3. Periksa DevTools → Console dan Network. API memerlukan koneksi internet dan akses CORS. Jika API tidak dapat dijangkau di jaringan kelas, gunakan berkas JSON lokal dan ubah alamat di satu tempat pada `js/api.js`; catat perubahan tersebut.
+
+### Deklarasi penggunaan AI
+AI digunakan untuk membantu menyusun draf kode `js/api.js`, penyesuaian `js/dom.js`, dan merapikan jawaban worksheet. Saya tetap perlu menjalankan proyek, memeriksa Console/Network, mengambil tangkapan layar empat keadaan, dan memastikan saya memahami fungsi setiap bagian sebelum mengumpulkan. Bagian pengujian langsung dan tangkapan layar harus saya isi berdasarkan hasil yang benar-benar saya dapatkan.
+
+## Pertemuan 10 — JavaScript Asinkron, fetch, Promise, dan JSON
+
+Lanjutan dari P9: data informasi diambil secara asinkron, lalu ditampilkan sebagai kartu pada halaman profil. Bagian P4–P9 di atas dipertahankan; bagian ini hanya mencatat tambahan P10.
+
+| Materi | Yang dikerjakan | Letak |
+|---|---|---|
+| `fetch` dan Promise | Mengambil data dari berkas JSON lokal dan menangani Promise secara asinkron | `js/api.js` |
+| Pemeriksaan respons | Memeriksa `response.ok` sebelum membaca isi respons dengan `response.json()` | `js/api.js` |
+| `async/await` dan `try/catch` | Menunggu data dan menampilkan penanganan jika permintaan atau pembacaan data gagal | `js/api.js`, `js/dom.js` |
+| JSON | Menyediakan contoh `JSON.parse()` dan `JSON.stringify()` | `js/api.js` |
+| Tampilan dinamis | Membuat kartu informasi menggunakan `createElement` dan `textContent`, serta filter kategori | `js/dom.js`, `profil.html`, `css/komponen.css` |
+| Keadaan UI | Menangani keadaan memuat, berhasil, gagal, dan kosong | `js/dom.js` |
+
+### Berkas tambahan P10
+
+- `js/api.js` — fungsi `ambilNotisia()` untuk mengambil dan memeriksa data.
+- `js/dom.js` — menampilkan data dan menangani filter serta keadaan antarmuka.
+- `notisia.json` — contoh data JSON lokal yang digunakan oleh fitur P10.
+- `profil.html` dan `css/komponen.css` — ditambahkan bagian informasi dan gaya terkait tanpa menghapus bagian profil yang sudah ada.
+- `js/app.js` — logika sebelumnya dipertahankan; ditambahkan impor `js/dom.js` untuk mengaktifkan fitur P10.
+
+### Menjalankan dan memeriksa P10
+
+profil.html dijalankan melalui Live Server di VS Code. `profil.html`:
+
+
+Kemudian buka `http://127.0.0.1:5500/profil.html`. Buka DevTools (`F12`) dan periksa tab **Console** serta **Network**. Coba tombol filter **Semua**, **Informatika**, **Kuliah**, dan **Web**.
+
+Uji juga keadaan memuat, berhasil, gagal, dan kosong. Untuk uji kosong, jalankan `gambarNotisia([])` di Console. Untuk uji gagal, ubah sementara nama berkas JSON pada `js/api.js`, muat ulang halaman, lalu kembalikan nama berkas seperti semula. Ambil tangkapan layar sendiri setelah pengujian benar-benar dilakukan; jangan mencantumkan bukti yang belum diambil.
+
+### Deklarasi penggunaan AI — Pertemuan 10
+
+AI membantu menyusun tambahan awal untuk `js/api.js`, `js/dom.js`, bagian P10 pada `profil.html`, tambahan CSS, dan draf dokumentasi P10. Isi README dari pertemuan sebelumnya dipertahankan dan hanya bagian P10 ini yang ditambahkan. Kode perlu dijalankan dan diperiksa sendiri sebelum pengumpulan, lalu catatan hasil uji serta bukti disesuaikan dengan hasil yang benar-benar diamati.
