@@ -204,6 +204,7 @@ Id harus persis sama dengan di HTML, dan `addEventListener` dipasang sekali di i
 - `worksheet-p6/` — `profil.html`, keenam berkas CSS (lima dari P4/P5 + responsif.css), dan `bukti/` (tiga tangkapan layar 360/768/1280 px).
 - `worksheet-p8/` — `profil.html`, seluruh CSS dari P6, dan `js/app.js` (data, fungsi murni, array methods).
 - `worksheet-p9/` — `profil.html`, seluruh CSS, `js/app.js` (data + kategori), `js/dom.js` (render, filter, validasi form), dan `bukti/` (tangkapan layar P9).
+- `worksheet-p11/` — `profil.html`, seluruh CSS, dan lima modul di `js/` (`data.js`, `state.js`, `dom.js`, `events.js`, `app.js`) ditambah `api.js` dari P10; `bukti/` untuk tangkapan layar P11.
 
 ## Tiga pekerjaan utama
 
@@ -322,3 +323,26 @@ Uji juga keadaan memuat, berhasil, gagal, dan kosong. Untuk uji kosong, jalankan
 ### Deklarasi penggunaan AI — Pertemuan 10
 
 AI membantu menyusun tambahan awal untuk `js/api.js`, `js/dom.js`, bagian P10 pada `profil.html`, tambahan CSS, dan draf dokumentasi P10. Isi README dari pertemuan sebelumnya dipertahankan dan hanya bagian P10 ini yang ditambahkan. Kode perlu dijalankan dan diperiksa sendiri sebelum pengumpulan, lalu catatan hasil uji serta bukti disesuaikan dengan hasil yang benar-benar diamati.
+
+## Pertemuan 11 — Modul, State, dan Penyimpanan Klien
+
+Bagian P11 melanjutkan halaman profil P10. Kode JavaScript dipecah menjadi modul ES (`type="module"`) dengan tugas masing-masing:
+
+- `js/data.js` — data profil dan daftar proyek, tanpa import.
+- `js/state.js` — satu objek `state` (notisia, kategori aktif, status, pesan galat) beserta fungsi yang mengubahnya; setiap perubahan memanggil `render`. Di sini juga fungsi `simpan`, `muat`, `pulihkan`, dan `aturUlang` untuk localStorage.
+- `js/dom.js` — mengambil elemen dan menggambar ulang halaman dari `state`.
+- `js/events.js` — pendengar klik (delegasi di induk tombol filter dan tombol atur ulang).
+- `js/api.js` — tetap seperti P10 (satu-satunya tempat `fetch`).
+- `js/app.js` — perakit: memulihkan pilihan, memasang pendengar, menggambar, lalu memuat notisia.
+
+### Yang disimpan di localStorage
+Hanya kategori filter yang aktif, dengan kunci `pabw-p11` dan nomor versi (`versi: 2`). Sengaja tidak disimpan: isi form, token, kata sandi, atau data pribadi. Kalau isi penyimpanan rusak (bukan JSON), versinya berbeda, atau kategorinya tidak dikenal, data dibuang dan filter kembali ke "Semua" tanpa membuat halaman error. Tombol "Atur ulang filter" juga menghapusnya.
+
+### Menjalankan
+1. Buka folder `worksheet-p11` di VS Code, lalu jalankan `profil.html` dengan Live Server (modul tidak jalan lewat `file://`).
+2. Buka DevTools (`F12`) → Console dan Network.
+3. Pilih kategori, muat ulang, dan pastikan pilihan bertahan. Untuk menguji penyimpanan rusak: `localStorage.setItem("pabw-p11", "bukan-json")` di Console, lalu muat ulang.
+4. Versi alat: `node -v` = v24.22.0 dan `npm -v` = 11.19.1
+
+### Deklarasi penggunaan AI — Pertemuan 11
+AI membantu memecah kode menjadi lima modul, menulis logika penyimpanan, menjalankan pengujian otomatis (Playwright) untuk keadaan memuat/berhasil/gagal/kosong dan penyimpanan rusak, serta mengisi draf worksheet. Saya sendiri masih perlu menjalankan di komputer saya, mengambil tangkapan layar yang benar-benar nyata, mengisi versi Node/npm. Isi README sebelumnya tidak diubah, hanya ditambah satu baris di "Isi paket" dan bagian ini.
